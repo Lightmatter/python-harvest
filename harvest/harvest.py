@@ -38,6 +38,10 @@ class Harvest(object):
 
     def update(self, entry_id, data):
         return self._request('POST', '%s/daily/update/%s' % (self.uri, entry_id), data)
+
+    def get(self, path):
+        return self._request('GET', '%s%s' % (self.uri, path))
+
     def _request(self, type = "GET", url = "", data = None):
         if type != "DELETE":
             if data:
